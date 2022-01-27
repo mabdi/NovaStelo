@@ -500,6 +500,33 @@ VarDefTest >> testUserDefinedVarNoAndNames [
 		equals: #(#(1 'a') #(2 'b') #(3 'c')).
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testUserDefinedVarNoAndNames_amp_L12 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testUserDefinedVarNoAndNames` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `VarDef>> #varNoFor:` from 46 to 50:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ nil`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#varNoFor:#46#50
+	*	In `VarDef>> #varNoFor:` from 20 to 52:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aString isEmpty ifTrue: [ ^ nil ]`
+		Dynamic state: {#aString->''}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#VarDef#varNoFor:#20#52
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addVariable: 'a';
+		addVariable: 'b';
+		addVariable: ''.
+	self assert: (v userDefinedVarNoAndNames at: 3) equals: #( nil '' )
+]
+
 { #category : #test }
 VarDefTest >> testVarFor [
 	| v |
