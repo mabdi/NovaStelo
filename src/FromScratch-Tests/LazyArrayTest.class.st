@@ -98,6 +98,27 @@ LazyArrayTest >> testAssureExistsIndexAnd [
 	self assert: ((a at: 10) at: 20) equals: 2.
 ]
 
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testAssureExistsIndexAnd_amp [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testAssureExistsIndexAnd` by regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #isEmpty` from 12 to 44:
+		Operation: ReplaceOrArgumentWithFalseOperator
+		Code snippet: `array isNil or: [ array isEmpty ]`
+		Dynamic state: {#array->#()}
+		Mutant id: ReplaceOrArgumentWithFalseOperator#LazyArray#isEmpty#12#44
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray: #Array.
+	self assert: a isEmpty.
+	a
+		defaultValue: 2;
+		assureExistsIndex: 10 and: 20
+]
+
 { #category : #test }
 LazyArrayTest >> testAt [
 	| a |
