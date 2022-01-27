@@ -27,6 +27,26 @@ StringArrayTest >> testAtPut [
 	self assert: (a at: 1) equals: 2
 ]
 
+{ #category : #'as yet unclassified' }
+StringArrayTest >> testAtPut_amp [
+
+	"SmallAmp has derived this test from `StringArrayTest>>#testAtPut` by regenerating its assertions.
+	This test can cover this part:
+	*	In `StringArray>> #at:put:` from 30 to 64:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ array at: anInteger put: anObject`
+		Dynamic state: {#anInteger->1. #anObject->2}
+		Mutant id: RemoveCaretOperator#StringArray#at:put:#30#64
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray.
+	a
+		forceTo: 1 paddingWith: '';
+		at: 1 put: 2
+]
+
 { #category : #test }
 StringArrayTest >> testDefaultElement [
 	| a |
