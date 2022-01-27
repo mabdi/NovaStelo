@@ -255,6 +255,30 @@ SMicroWorldTest >> testColors_amp_A100_L10 [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp_A100_L26 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #flag:breed:at:` from 36 to 76:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ (breeds at: bid) flag: anInteger at: id`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SMicroWorld#flag:breed:at:#36#76
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 3;
+		 create: 3 turtles: 3;
+		 breedOf: 3) colorAt: 1 put: 12.
+	w
+		patches;
+		worldName
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testColors_amp_L36_L40 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
