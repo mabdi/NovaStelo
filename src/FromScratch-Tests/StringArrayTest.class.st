@@ -74,6 +74,29 @@ StringArrayTest >> testForceToPaddingWith [
 	self assert: (a stringAt: 4) equals: 'b'
 ]
 
+{ #category : #'as yet unclassified' }
+StringArrayTest >> testForceToPaddingWith_amp [
+
+	"SmallAmp has derived this test from `StringArrayTest>>#testForceToPaddingWith` by regenerating its assertions.
+	This test can cover this part:
+	*	In `StringArray>> #stringAt:put:` from 70 to 97:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self at: anInteger put: id`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#StringArray#stringAt:put:#70#97
+"
+
+	<madeBySmallAmp>
+	| a anInteger |
+	a := self newArray.
+	a := a forceTo: 2 paddingWith: 'a'.
+	anInteger := a stringAt: 1 put: 'c'.
+	self assert: anInteger equals: 2.
+	a := a
+		     stringAt: 2 put: 'd';
+		     forceTo: 4 paddingWith: 'b'
+]
+
 { #category : #test }
 StringArrayTest >> testGenerateInvLiterals [
 	| a x y |
