@@ -112,6 +112,28 @@ SPatchesTest >> testColorAtPointPut [
 	self assertCollection: ps colors asArray equals: #(2 0 0 0 1 0 0 3 4).
 ]
 
+{ #category : #'as yet unclassified' }
+SPatchesTest >> testColorAtPoint_amp_A27 [
+
+	"SmallAmp has derived this test from `SPatchesTest>>#testColorAtPoint` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SPatches>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SPatches#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| ps anInteger |
+	ps := SPatches new.
+	anInteger := ps
+		             create: 3;
+		             fieldsVersion.
+	self assert: anInteger equals: 1.
+	ps privVariables
+]
+
 { #category : #'tests-accessing' }
 SPatchesTest >> testColorVariable [
 	| ps |
