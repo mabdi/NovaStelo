@@ -150,6 +150,31 @@ SPatchesTest >> testDefaultOrder [
 	self assert: ps defaultOrder equals: 100.
 ]
 
+{ #category : #'as yet unclassified' }
+SPatchesTest >> testDefaultOrder_amp [
+
+	"SmallAmp has derived this test from `SPatchesTest>>#testDefaultOrder` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `SPatches>> #diffuserName` from 15 to 37:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ diffuser diffuserName`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SPatches#diffuserName#15#37
+	*	In `SPatches>> #breedName` from 12 to 20:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 'Patch'`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SPatches#breedName#12#20
+"
+
+	<madeBySmallAmp>
+	| ps |
+	ps := SPatches new.
+	self
+		assert: ps diffuserName equals: 'native diffuser';
+		assert: ps breedName equals: 'Patch'
+]
+
 { #category : #'tests-command' }
 SPatchesTest >> testDiffuse4VarNo [
 	| ps v |
