@@ -218,6 +218,31 @@ VarDefTest >> testIsReserved_amp [
 	self assert: v userDefinedVarNoAndNames size equals: 1
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testIsReserved_amp_D2 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testIsReserved` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #add:className:` from 69 to 201:
+		Operation: ReplaceIfTrueIfFalseReceiverWithFalseOperator
+		Code snippet: `(self includes: aString)
+	ifTrue: [ self varNoFor: aString ]
+	ifFalse: [ 
+		varNames := varNames copyWith: aString.
+		varNames size ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueIfFalseReceiverWithFalseOperator#VarDef#add:className:#69#201
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addReservedVariable: 'b' varNo: 1;
+		addVariable: 'a';
+		addVariable: 'a'
+]
+
 { #category : #test }
 VarDefTest >> testIsStringVarNo [
 	| v a b |
