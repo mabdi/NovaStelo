@@ -718,6 +718,43 @@ SMicroWorldTest >> testPatches [
 	self assert: w patches class equals: SPatches.
 ]
 
+{ #category : #'as yet unclassified' }
+SMicroWorldTest >> testPatches_amp [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testPatches` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `SMicroWorld>> #worldName` from 65 to 109:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 'MicroWorld - ' , self patches diffuserName`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SMicroWorld#worldName#65#109
+	*	In `SMicroWorld>> #worldName` from 12 to 111:
+		Operation: ReplaceIfTrueWithIfFalseMutantOperator
+		Code snippet: `self maxBreedNo >= SBreedId patchBreedNo ifTrue: [ 
+	^ 'MicroWorld - ' , self patches diffuserName ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueWithIfFalseMutantOperator#SMicroWorld#worldName#12#111
+	*	In `SMicroWorld>> #worldName` from 12 to 51:
+		Operation: ReplaceGreaterOrEqualWithEqualMutantOperator
+		Code snippet: `self maxBreedNo >= SBreedId patchBreedNo`
+		Dynamic state: nil
+		Mutant id: ReplaceGreaterOrEqualWithEqualMutantOperator#SMicroWorld#worldName#12#51
+	*	In `SMicroWorld>> #worldName` from 12 to 111:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `self maxBreedNo >= SBreedId patchBreedNo ifTrue: [ 
+	^ 'MicroWorld - ' , self patches diffuserName ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#SMicroWorld#worldName#12#111
+"
+
+	<madeBySmallAmp>
+	| w |
+	self
+		newWorld;
+		assert: w newProcess class equals: SProcess;
+		assert: w worldName equals: 'MicroWorld - native diffuser'
+]
+
 { #category : #test }
 SMicroWorldTest >> testPlotColor [
 	| w ret |
