@@ -163,6 +163,30 @@ LazyArrayTest >> testForceSize [
 	self should: [ l at: 30 put: 1 ] raise: Error.
 ]
 
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testForceSize_amp_L20_L10 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testForceSize` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `LazyArray>> #at:put:` from 103 to 108:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#at:put:#103#108
+	*	In `LazyArray>> #at:put:` from 62 to 110:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aValue = self defaultValue ifTrue: [ ^ self ]`
+		Dynamic state: {#aValue->1}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#LazyArray#at:put:#62#110
+"
+
+	<madeBySmallAmp>
+	| l |
+	l := LazyArray className: #FloatArray.
+	l at: 20 put: 0.
+	self should: [ l forceSize: -10 ] raise: PrimitiveFailed
+]
+
 { #category : #test }
 LazyArrayTest >> testIsEmpty [
 	| l |
