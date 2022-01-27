@@ -65,6 +65,27 @@ VarDefTest >> testAddReservedVarNoClassName [
 	self assert: (v privReservedVarNames includes: 'b')
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testAddReservedVarNoClassName_amp_A8 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testAddReservedVarNoClassName` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrWithXorMutantOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'b'. #reservedVarNames->#(nil 'b')}
+		Mutant id: ReplaceOrWithXorMutantOperator#VarDef#userDefinedVarNames#58#107
+"
+
+	<madeBySmallAmp>
+	| v x |
+	v := self newVarDef.
+	v
+		addReserved: 'b' varNo: 2 className: #ByteArray;
+		fixVars.
+	self assertEmpty: v userDefinedVarNames
+]
+
 { #category : #test }
 VarDefTest >> testAddReservedVariableVarNo [
 	| v a b |
