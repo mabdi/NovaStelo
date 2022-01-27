@@ -325,6 +325,31 @@ SMicroWorldTest >> testColors_amp_L36_L67 [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp_L36_L67_L60 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #turtleVarNames` from 118 to 150:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ list asSortedCollection asArray`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SMicroWorld#turtleVarNames#118#150
+"
+
+	<madeBySmallAmp>
+	| w anUndefinedObject |
+	w := self newWorld.
+	(w
+		 createPatch: 3;
+		 create: 3 turtles: 1;
+		 breedOf: 3) colorAt: 2 put: 12.
+	anUndefinedObject := w patches.
+	self
+		should: [ anUndefinedObject colorAt: 1152921504606846975 put: 11 ]
+		raise: AssertionFailure
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testColors_amp_L36_L67_L63 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
