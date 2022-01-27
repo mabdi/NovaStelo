@@ -230,6 +230,29 @@ LazyArrayTest >> testIsFixed [
 	self assert: l isFixed.
 ]
 
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testIsFixed_amp_A69 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testIsFixed` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 2`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| l anInteger |
+	l := LazyArray className: #FloatArray.
+	anInteger := l
+		             at: 20 put: 1;
+		             forceSize: 10;
+		             reset;
+		             fieldsVersion.
+	self assert: anInteger equals: 2
+]
+
 { #category : #test }
 LazyArrayTest >> testList [
 	| a ret |
