@@ -235,6 +235,26 @@ SMicroWorldTest >> testColors_amp_A100 [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp_A100_L10 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #create:turtles:` from 33 to 116:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `bid < SBreedId defaultUserNo ifTrue: [ 
+	self error: 'breedId must be more than 2' ]`
+		Dynamic state: {#bid->3}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#SMicroWorld#create:turtles:#33#116
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	w createPatch: 3.
+	self should: [ w create: 2 turtles: 1 ] raise: Error
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testColors_amp_L36_L40 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
