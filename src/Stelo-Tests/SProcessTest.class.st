@@ -238,6 +238,27 @@ SProcessTest >> testStep [
 	p step.
 ]
 
+{ #category : #'as yet unclassified' }
+SProcessTest >> testStep_amp_A9 [
+
+	"SmallAmp has derived this test from `SProcessTest>>#testStep` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SProcess>> #step` from 7 to 42:
+		Operation: ReplaceIfFalseReceiverWithFalseOperator
+		Code snippet: `self isRunning ifFalse: [ ^ self ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfFalseReceiverWithFalseOperator#SProcess#step#7#42
+"
+
+	<madeBySmallAmp>
+	| p |
+	p := SMicroWorld new newProcess program: SProgram new.
+	p
+		privTransition: #idle;
+		event: 10.
+	self should: [ p step ] raise: SubscriptOutOfBounds
+]
+
 { #category : #'tests-execution' }
 SProcessTest >> testStop [
 	| p |
