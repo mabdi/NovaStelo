@@ -404,6 +404,30 @@ VarDefTest >> testRealVarNames [
 	self assertCollection: v realVarNames equals: #(a b)
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testRealVarNames_amp_A23 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testRealVarNames` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| v anInteger |
+	v := VarDef new.
+	anInteger := v
+		             addVariable: 'a';
+		             fieldsVersion.
+	self assert: anInteger equals: 1.
+	v
+		addVariable: 'b';
+		add: 'c' className: nil
+]
+
 { #category : #test }
 VarDefTest >> testRegularize [
 	| v |
