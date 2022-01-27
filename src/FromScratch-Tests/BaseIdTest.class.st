@@ -60,6 +60,24 @@ BaseIdTest >> testSize [
 	self assert: e size equals: e class reservedNo + 1.
 ]
 
+{ #category : #'as yet unclassified' }
+BaseIdTest >> testSize_amp [
+
+	"SmallAmp has derived this test from `BaseIdTest>>#testSize` by regenerating its assertions.
+	This test can cover this part:
+	*	In `BaseId>> #newNo` from 52 to 54:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ v`
+		Dynamic state: {#v->1}
+		Mutant id: RemoveCaretOperator#BaseId#newNo#52#54
+"
+
+	<madeBySmallAmp>
+	| e anInteger |
+	anInteger := self newBaseId newNo.
+	self assert: anInteger equals: 1
+]
+
 { #category : #test }
 BaseIdTest >> testUserDefinedVarNos [
 	| e |
