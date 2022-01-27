@@ -104,6 +104,25 @@ ObjStreamTest >> testUserClasses [
 	self assert: suspectClasses isEmpty
 ]
 
+{ #category : #'as yet unclassified' }
+ObjStreamTest >> testUserClasses_amp [
+
+	"SmallAmp has derived this test from `ObjStreamTest>>#testUserClasses` by regenerating its assertions.
+	This test can cover this part:
+	*	In `ObjStream>> #objects` from 11 to 19:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ objects`
+		Dynamic state: {#objects->nil}
+		Mutant id: RemoveCaretOperator#ObjStream#objects#11#19
+"
+
+	<madeBySmallAmp>
+	| userClassList suspectClasses anObjStream |
+	anObjStream := self newObjStream.
+	self assert: anObjStream objects isNil.
+	anObjStream class userClasses
+]
+
 { #category : #tests }
 ObjStreamTest >> testWriteFile [
 	| all objects s file |
