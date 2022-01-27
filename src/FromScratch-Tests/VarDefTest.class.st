@@ -40,6 +40,38 @@ VarDefTest >> testAddComputedVariableVarNo [
 	self assert: (v privVarClasses at: 'b') equals: nil
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testAddComputedVariableVarNo_amp [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testAddComputedVariableVarNo` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrWithAndMutantOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'a'. #reservedVarNames->#('b')}
+		Mutant id: ReplaceOrWithAndMutantOperator#VarDef#userDefinedVarNames#58#107
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrArgumentWithFalseOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'a'. #reservedVarNames->#('b')}
+		Mutant id: ReplaceOrArgumentWithFalseOperator#VarDef#userDefinedVarNames#58#107
+	*	In `VarDef>> #userDefinedVarNames` from 24 to 109:
+		Operation: ReplaceRejectBlockWithAlwaysFalseBlockOperator
+		Code snippet: `self varNames reject: [ :each | 
+	each isNil or: [ reservedVarNames includes: each ] ]`
+		Dynamic state: nil
+		Mutant id: ReplaceRejectBlockWithAlwaysFalseBlockOperator#VarDef#userDefinedVarNames#24#109
+"
+
+	<madeBySmallAmp>
+	| v a b |
+	v := self newVarDef.
+	a := v
+		     addComputedVariable: 'b' varNo: 1;
+		     addVariable: 'a'.
+	self assert: v userDefinedVarNoAndNames size equals: 1
+]
+
 { #category : #test }
 VarDefTest >> testAddList [
 	| v x |
@@ -63,6 +95,48 @@ VarDefTest >> testAddReservedVarNoClassName [
 	self assert: v privVarClasses size equals: 1.
 	self assert: (v privVarClasses at: 'b') equals: #ByteArray.
 	self assert: (v privReservedVarNames includes: 'b')
+]
+
+{ #category : #'as yet unclassified' }
+VarDefTest >> testAddReservedVarNoClassName_amp_A10 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testAddReservedVarNoClassName` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| v x anInteger |
+	v := self newVarDef.
+	anInteger := v
+		             addReserved: 'b' varNo: 2 className: #ByteArray;
+		             fieldsVersion.
+	self assert: anInteger equals: 1
+]
+
+{ #category : #'as yet unclassified' }
+VarDefTest >> testAddReservedVarNoClassName_amp_A8 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testAddReservedVarNoClassName` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrWithXorMutantOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'b'. #reservedVarNames->#(nil 'b')}
+		Mutant id: ReplaceOrWithXorMutantOperator#VarDef#userDefinedVarNames#58#107
+"
+
+	<madeBySmallAmp>
+	| v x |
+	v := self newVarDef.
+	v
+		addReserved: 'b' varNo: 2 className: #ByteArray;
+		fixVars.
+	self assertEmpty: v userDefinedVarNames
 ]
 
 { #category : #test }
@@ -186,6 +260,90 @@ VarDefTest >> testIsReserved [
 	self assert: (v isReserved: 'b')
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testIsReserved_amp [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testIsReserved` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrWithAndMutantOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'a'. #reservedVarNames->#('b')}
+		Mutant id: ReplaceOrWithAndMutantOperator#VarDef#userDefinedVarNames#58#107
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrArgumentWithFalseOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'a'. #reservedVarNames->#('b')}
+		Mutant id: ReplaceOrArgumentWithFalseOperator#VarDef#userDefinedVarNames#58#107
+	*	In `VarDef>> #userDefinedVarNames` from 24 to 109:
+		Operation: ReplaceRejectBlockWithAlwaysFalseBlockOperator
+		Code snippet: `self varNames reject: [ :each | 
+	each isNil or: [ reservedVarNames includes: each ] ]`
+		Dynamic state: nil
+		Mutant id: ReplaceRejectBlockWithAlwaysFalseBlockOperator#VarDef#userDefinedVarNames#24#109
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addReservedVariable: 'b' varNo: 1;
+		addVariable: 'a'.
+	self assert: v userDefinedVarNoAndNames size equals: 1
+]
+
+{ #category : #'as yet unclassified' }
+VarDefTest >> testIsReserved_amp_D2 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testIsReserved` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #add:className:` from 69 to 201:
+		Operation: ReplaceIfTrueIfFalseReceiverWithFalseOperator
+		Code snippet: `(self includes: aString)
+	ifTrue: [ self varNoFor: aString ]
+	ifFalse: [ 
+		varNames := varNames copyWith: aString.
+		varNames size ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueIfFalseReceiverWithFalseOperator#VarDef#add:className:#69#201
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addReservedVariable: 'b' varNo: 1;
+		addVariable: 'a';
+		addVariable: 'a'
+]
+
+{ #category : #'as yet unclassified' }
+VarDefTest >> testIsReserved_amp_D2_L20 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testIsReserved` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `VarDef>> #varNoFor:` from 46 to 50:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ nil`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#varNoFor:#46#50
+	*	In `VarDef>> #varNoFor:` from 20 to 52:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aString isEmpty ifTrue: [ ^ nil ]`
+		Dynamic state: {#aString->''}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#VarDef#varNoFor:#20#52
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addReservedVariable: 'b' varNo: 1;
+		addVariable: 'a';
+		addVariable: ''.
+	self assert: (v userDefinedVarNoAndNames at: 2) equals: #( nil '' )
+]
+
 { #category : #test }
 VarDefTest >> testIsStringVarNo [
 	| v a b |
@@ -244,6 +402,30 @@ VarDefTest >> testRealVarNames [
 	self assertCollection: v realVarNames equals: #(a b).
 	v add: 'c' className: nil.
 	self assertCollection: v realVarNames equals: #(a b)
+]
+
+{ #category : #'as yet unclassified' }
+VarDefTest >> testRealVarNames_amp_A23 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testRealVarNames` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| v anInteger |
+	v := VarDef new.
+	anInteger := v
+		             addVariable: 'a';
+		             fieldsVersion.
+	self assert: anInteger equals: 1.
+	v
+		addVariable: 'b';
+		add: 'c' className: nil
 ]
 
 { #category : #test }
@@ -316,6 +498,33 @@ VarDefTest >> testUserDefinedVarNoAndNames [
 	self
 		assertCollection: v userDefinedVarNoAndNames asArray
 		equals: #(#(1 'a') #(2 'b') #(3 'c')).
+]
+
+{ #category : #'as yet unclassified' }
+VarDefTest >> testUserDefinedVarNoAndNames_amp_L12 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testUserDefinedVarNoAndNames` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `VarDef>> #varNoFor:` from 46 to 50:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ nil`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#varNoFor:#46#50
+	*	In `VarDef>> #varNoFor:` from 20 to 52:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aString isEmpty ifTrue: [ ^ nil ]`
+		Dynamic state: {#aString->''}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#VarDef#varNoFor:#20#52
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addVariable: 'a';
+		addVariable: 'b';
+		addVariable: ''.
+	self assert: (v userDefinedVarNoAndNames at: 3) equals: #( nil '' )
 ]
 
 { #category : #test }

@@ -47,6 +47,25 @@ LazyArrayTest >> testArrayClass [
 	self assert: l arrayClass equals: ByteArray.
 ]
 
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testArray_amp [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testArray` by regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #isEmpty` from 12 to 44:
+		Operation: ReplaceOrArgumentWithFalseOperator
+		Code snippet: `array isNil or: [ array isEmpty ]`
+		Dynamic state: {#array->nil}
+		Mutant id: ReplaceOrArgumentWithFalseOperator#LazyArray#isEmpty#12#44
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray: #FloatArray.
+	self assert: a isEmpty.
+	a at: 10 put: 1
+]
+
 { #category : #test }
 LazyArrayTest >> testAssureExistsIndex [
 	| a |
@@ -77,6 +96,27 @@ LazyArrayTest >> testAssureExistsIndexAnd [
 	self assert: (a at: 10) size equals: 20.
 	self assert: ((a at: 10) at: 1) equals: 2.
 	self assert: ((a at: 10) at: 20) equals: 2.
+]
+
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testAssureExistsIndexAnd_amp [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testAssureExistsIndexAnd` by regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #isEmpty` from 12 to 44:
+		Operation: ReplaceOrArgumentWithFalseOperator
+		Code snippet: `array isNil or: [ array isEmpty ]`
+		Dynamic state: {#array->#()}
+		Mutant id: ReplaceOrArgumentWithFalseOperator#LazyArray#isEmpty#12#44
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray: #Array.
+	self assert: a isEmpty.
+	a
+		defaultValue: 2;
+		assureExistsIndex: 10 and: 20
 ]
 
 { #category : #test }
@@ -163,6 +203,30 @@ LazyArrayTest >> testForceSize [
 	self should: [ l at: 30 put: 1 ] raise: Error.
 ]
 
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testForceSize_amp_L20_L10 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testForceSize` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `LazyArray>> #at:put:` from 103 to 108:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#at:put:#103#108
+	*	In `LazyArray>> #at:put:` from 62 to 110:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aValue = self defaultValue ifTrue: [ ^ self ]`
+		Dynamic state: {#aValue->1}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#LazyArray#at:put:#62#110
+"
+
+	<madeBySmallAmp>
+	| l |
+	l := LazyArray className: #FloatArray.
+	l at: 20 put: 0.
+	self should: [ l forceSize: -10 ] raise: PrimitiveFailed
+]
+
 { #category : #test }
 LazyArrayTest >> testIsEmpty [
 	| l |
@@ -185,6 +249,29 @@ LazyArrayTest >> testIsFixed [
 	self assert: l isFixed.
 	l reset.
 	self assert: l isFixed.
+]
+
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testIsFixed_amp_A69 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testIsFixed` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 2`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| l anInteger |
+	l := LazyArray className: #FloatArray.
+	anInteger := l
+		             at: 20 put: 1;
+		             forceSize: 10;
+		             reset;
+		             fieldsVersion.
+	self assert: anInteger equals: 2
 ]
 
 { #category : #test }
@@ -239,6 +326,28 @@ LazyArrayTest >> testListAtPut [
 	self assert: (a list: 5 at: 1) equals: ''.
 	self assert: (a list: 5 at: 2) equals: 'a'.
 	self assert: (a list: 5 at: 3) equals: 'b'
+]
+
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testListAt_amp_A5 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testListAt` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 2`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| a anInteger |
+	a := self newArray: #Array.
+	anInteger := a
+		             defaultValue: '';
+		             fieldsVersion.
+	self assert: anInteger equals: 2.
+	a assureExistsIndex: 5 and: 3
 ]
 
 { #category : #test }
@@ -414,4 +523,29 @@ LazyArrayTest >> testStringAtPut [
 	a stringAt: 2 put: 'def'.
 	self assert: (a stringAt: 1) equals: 'abc'.
 	self assert: (a stringAt: 2) equals: 'def'
+]
+
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testStringAt_amp_A9_L8 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testStringAt` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `LazyArray>> #stringAt:put:` from 109 to 158:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aString = self defaultValue ifTrue: [ ^ self ]`
+		Dynamic state: {#aString->'abc'}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#LazyArray#stringAt:put:#109#158
+	*	In `LazyArray>> #stringAt:put:` from 151 to 156:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#stringAt:put:#151#156
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray: #StringArray.
+	a
+		stringAt: 1 put: '';
+		size
 ]

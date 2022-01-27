@@ -121,6 +121,68 @@ CommandBlockMorphTest >> testEvaluateFunctionWithArgs [
 		equals: 3
 ]
 
+{ #category : #'as yet unclassified' }
+CommandBlockMorphTest >> testEvaluateFunctionWithArgs_amp_U2_N0 [
+
+	"SmallAmp has derived this test from `CommandBlockMorphTest>>#testEvaluateFunctionWithArgs` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `CommandBlockMorph>> #receiver` from 12 to 21:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ receiver`
+		Dynamic state: {#receiver->nil}
+		Mutant id: RemoveCaretOperator#CommandBlockMorph#receiver#12#21
+	*	In `CommandBlockMorph>> #labelId` from 10 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ labelId`
+		Dynamic state: {#labelId->nil}
+		Mutant id: RemoveCaretOperator#CommandBlockMorph#labelId#10#18
+	*	In `CommandBlockMorph>> #isForever` from 15 to 37:
+		Operation: ReplaceEqualWithNotEqualOperator
+		Code snippet: `(selector = #doForever)`
+		Dynamic state: {#selector->nil}
+		Mutant id: ReplaceEqualWithNotEqualOperator#CommandBlockMorph#isForever#15#37
+	*	In `CommandBlockMorph>> #isForever` from 41 to 65:
+		Operation: ReplaceEqualWithNotEqualOperator
+		Code snippet: `(selector = #doForeverIf)`
+		Dynamic state: {#selector->nil}
+		Mutant id: ReplaceEqualWithNotEqualOperator#CommandBlockMorph#isForever#41#65
+	*	In `CommandBlockMorph>> #argMorphs` from 13 to 23:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ argMorphs`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#CommandBlockMorph#argMorphs#13#23
+	*	In `CommandBlockMorph>> #selector` from 12 to 21:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ selector`
+		Dynamic state: {#selector->nil}
+		Mutant id: RemoveCaretOperator#CommandBlockMorph#selector#12#21
+	*	In `CommandBlockMorph>> #commandSpec` from 15 to 27:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ commandSpec`
+		Dynamic state: {#commandSpec->''}
+		Mutant id: RemoveCaretOperator#CommandBlockMorph#commandSpec#15#27
+"
+
+	<madeBySmallAmp>
+	| b aCommandBlockMorph |
+	aCommandBlockMorph := self newBlock.
+	self
+		assert: aCommandBlockMorph selector isNil;
+		assert: aCommandBlockMorph isCommandBlock;
+		assert: aCommandBlockMorph commandSpec equals: '';
+		deny: aCommandBlockMorph isForever;
+		deny: aCommandBlockMorph isStopOrForever;
+		assert: aCommandBlockMorph argMorphs class
+		equals: OrderedCollection;
+		deny: aCommandBlockMorph isTimed;
+		assert: aCommandBlockMorph receiver isNil;
+		assert: aCommandBlockMorph labelId isNil.
+	b := aCommandBlockMorph
+		     receiver: nil;
+		     yourself.
+	self should: [ b commandSpec: 'abs %n' ] raise: MessageNotUnderstood
+]
+
 { #category : #test }
 CommandBlockMorphTest >> testEvaluateInfixWithArgs [
 	| b |

@@ -308,3 +308,28 @@ STurtlesTest >> testYAt [
 STurtlesTest >> testYAtPut [
 	self testYAt.
 ]
+
+{ #category : #'as yet unclassified' }
+STurtlesTest >> testYAt_amp [
+
+	"SmallAmp has derived this test from `STurtlesTest>>#testYAt` by regenerating its assertions.
+	This test can cover this part:
+	*	In `STurtles>> #breedsAtPoint:` from 158 to 231:
+		Operation: ReplaceAndWithEqvMutantOperator
+		Code snippet: `((self xAt: index) truncated = x and: [ 
+	 (self yAt: index) truncated = y ])`
+		Dynamic state: nil
+		Mutant id: ReplaceAndWithEqvMutantOperator#STurtles#breedsAtPoint:#158#231
+"
+
+	<madeBySmallAmp>
+	| ts |
+	ts := STurtles new breedNo: SBreedId turtleBreedNo.
+	ts
+		clear;
+		create: 2.
+	self assert: ts colors byteSize equals: 100.
+	ts
+		yAt: 1 put: 10;
+		yAt: 2 put: 20
+]

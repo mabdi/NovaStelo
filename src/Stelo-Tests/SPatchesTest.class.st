@@ -112,6 +112,28 @@ SPatchesTest >> testColorAtPointPut [
 	self assertCollection: ps colors asArray equals: #(2 0 0 0 1 0 0 3 4).
 ]
 
+{ #category : #'as yet unclassified' }
+SPatchesTest >> testColorAtPoint_amp_A27 [
+
+	"SmallAmp has derived this test from `SPatchesTest>>#testColorAtPoint` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SPatches>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SPatches#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| ps anInteger |
+	ps := SPatches new.
+	anInteger := ps
+		             create: 3;
+		             fieldsVersion.
+	self assert: anInteger equals: 1.
+	ps privVariables
+]
+
 { #category : #'tests-accessing' }
 SPatchesTest >> testColorVariable [
 	| ps |
@@ -148,6 +170,31 @@ SPatchesTest >> testDefaultOrder [
 	| ps |
 	ps := SPatches new.
 	self assert: ps defaultOrder equals: 100.
+]
+
+{ #category : #'as yet unclassified' }
+SPatchesTest >> testDefaultOrder_amp [
+
+	"SmallAmp has derived this test from `SPatchesTest>>#testDefaultOrder` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `SPatches>> #diffuserName` from 15 to 37:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ diffuser diffuserName`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SPatches#diffuserName#15#37
+	*	In `SPatches>> #breedName` from 12 to 20:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 'Patch'`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SPatches#breedName#12#20
+"
+
+	<madeBySmallAmp>
+	| ps |
+	ps := SPatches new.
+	self
+		assert: ps diffuserName equals: 'native diffuser';
+		assert: ps breedName equals: 'Patch'
 ]
 
 { #category : #'tests-command' }

@@ -27,6 +27,26 @@ StringArrayTest >> testAtPut [
 	self assert: (a at: 1) equals: 2
 ]
 
+{ #category : #'as yet unclassified' }
+StringArrayTest >> testAtPut_amp [
+
+	"SmallAmp has derived this test from `StringArrayTest>>#testAtPut` by regenerating its assertions.
+	This test can cover this part:
+	*	In `StringArray>> #at:put:` from 30 to 64:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ array at: anInteger put: anObject`
+		Dynamic state: {#anInteger->1. #anObject->2}
+		Mutant id: RemoveCaretOperator#StringArray#at:put:#30#64
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray.
+	a
+		forceTo: 1 paddingWith: '';
+		at: 1 put: 2
+]
+
 { #category : #test }
 StringArrayTest >> testDefaultElement [
 	| a |
@@ -52,6 +72,29 @@ StringArrayTest >> testForceToPaddingWith [
 	self assert: (a stringAt: 2) equals: 'd'.
 	self assert: (a stringAt: 3) equals: 'b'.
 	self assert: (a stringAt: 4) equals: 'b'
+]
+
+{ #category : #'as yet unclassified' }
+StringArrayTest >> testForceToPaddingWith_amp [
+
+	"SmallAmp has derived this test from `StringArrayTest>>#testForceToPaddingWith` by regenerating its assertions.
+	This test can cover this part:
+	*	In `StringArray>> #stringAt:put:` from 70 to 97:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self at: anInteger put: id`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#StringArray#stringAt:put:#70#97
+"
+
+	<madeBySmallAmp>
+	| a anInteger |
+	a := self newArray.
+	a := a forceTo: 2 paddingWith: 'a'.
+	anInteger := a stringAt: 1 put: 'c'.
+	self assert: anInteger equals: 2.
+	a := a
+		     stringAt: 2 put: 'd';
+		     forceTo: 4 paddingWith: 'b'
 ]
 
 { #category : #test }
@@ -192,4 +235,25 @@ StringArrayTest >> testStringOf [
 	self assert: (a stringOf: 0) equals: ''.
 	a forceTo: 1 paddingWith: 'a'.
 	self assert: (a stringOf: 1) equals: 'a'
+]
+
+{ #category : #'as yet unclassified' }
+StringArrayTest >> testStringOf_amp_A4 [
+
+	"SmallAmp has derived this test from `StringArrayTest>>#testStringOf` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `StringArray>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#StringArray#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| a anInteger |
+	a := self newArray.
+	anInteger := a
+		             forceTo: 1 paddingWith: 'a';
+		             fieldsVersion.
+	self assert: anInteger equals: 1
 ]
