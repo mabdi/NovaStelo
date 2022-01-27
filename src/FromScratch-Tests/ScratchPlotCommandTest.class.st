@@ -69,3 +69,24 @@ ScratchPlotCommandTest >> testIsClearPlot_amp [
 	p command: p class clearPlotNo.
 	self assert: p command equals: 1
 ]
+
+{ #category : #'as yet unclassified' }
+ScratchPlotCommandTest >> testIsClearPlot_amp_A3_L0 [
+
+	"SmallAmp has derived this test from `ScratchPlotCommandTest>>#testIsClearPlot` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `ScratchPlotCommand class>> #setPlotYMin` from 14 to 16:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 2`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#ScratchPlotCommand class#setPlotYMin#14#16
+"
+
+	<madeBySmallAmp>
+	| p |
+	p := self newPlotCommand.
+	p
+		command: p class clearPlotNo;
+		command: 2.
+	self assert: p isSetPlotYMin
+]
