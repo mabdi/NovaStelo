@@ -305,6 +305,28 @@ SMicroWorldTest >> testColors_amp_L36_L67 [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp_L36_L67_L63 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #y:at:put:` from 316 to 368:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `penDown ifTrue: [ ps colorAtPoint: x @ y put: c ]`
+		Dynamic state: {#penDown->false. #x->49.0. #y->48.900001525878906. #c->59}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#SMicroWorld#y:at:put:#316#368
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 3;
+		 create: 3 turtles: 1;
+		 breedOf: 3) colorAt: 2 put: 12.
+	w patches
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testColors_amp_U3 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
