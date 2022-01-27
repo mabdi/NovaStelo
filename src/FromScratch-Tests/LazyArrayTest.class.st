@@ -415,3 +415,28 @@ LazyArrayTest >> testStringAtPut [
 	self assert: (a stringAt: 1) equals: 'abc'.
 	self assert: (a stringAt: 2) equals: 'def'
 ]
+
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testStringAt_amp_A9_L8 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testStringAt` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `LazyArray>> #stringAt:put:` from 109 to 158:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aString = self defaultValue ifTrue: [ ^ self ]`
+		Dynamic state: {#aString->'abc'}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#LazyArray#stringAt:put:#109#158
+	*	In `LazyArray>> #stringAt:put:` from 151 to 156:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#stringAt:put:#151#156
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray: #StringArray.
+	a
+		stringAt: 1 put: '';
+		size
+]
