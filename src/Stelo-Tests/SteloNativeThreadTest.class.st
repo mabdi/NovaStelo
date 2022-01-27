@@ -1601,6 +1601,42 @@ SteloNativeThreadTest >> testSetHeading_amp_A1 [
 		setHeading
 ]
 
+{ #category : #'as yet unclassified' }
+SteloNativeThreadTest >> testSetHeading_amp_A106_R8_L41 [
+
+	"SmallAmp has derived this test from `SteloNativeThreadTest>>#testSetHeading` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `SteloNativeThread>> #setHeading` from 71 to 76:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SteloNativeThread#setHeading#71#76
+	*	In `SteloNativeThread>> #setHeading` from 26 to 57:
+		Operation: ReplaceLessOrEqualWithEqualMutantOperator
+		Code snippet: `breedId <= SBreedId patchBreedNo`
+		Dynamic state: {#breedId->3}
+		Mutant id: ReplaceLessOrEqualWithEqualMutantOperator#SteloNativeThread#setHeading#26#57
+	*	In `SteloNativeThread>> #setHeading` from 26 to 78:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `breedId <= SBreedId patchBreedNo ifTrue: [ ^ self ]`
+		Dynamic state: {#breedId->3}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#SteloNativeThread#setHeading#26#78
+"
+
+	<madeBySmallAmp>
+	| w t h |
+	w := self newWorld.
+	h := (w
+		      create: 3 turtles: 2;
+		      breedOf: 3) headingAt: 2.
+	t := self newThread: w.
+	t
+		forBreedNo: 0 index: 1;
+		push: 10;
+		setHeading.
+	self should: [ t getY ] raise: SubscriptOutOfBounds
+]
+
 { #category : #test }
 SteloNativeThreadTest >> testSetLineOfListTo [
 	| w t v |
