@@ -47,6 +47,25 @@ LazyArrayTest >> testArrayClass [
 	self assert: l arrayClass equals: ByteArray.
 ]
 
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testArray_amp [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testArray` by regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #isEmpty` from 12 to 44:
+		Operation: ReplaceOrArgumentWithFalseOperator
+		Code snippet: `array isNil or: [ array isEmpty ]`
+		Dynamic state: {#array->nil}
+		Mutant id: ReplaceOrArgumentWithFalseOperator#LazyArray#isEmpty#12#44
+"
+
+	<madeBySmallAmp>
+	| a |
+	a := self newArray: #FloatArray.
+	self assert: a isEmpty.
+	a at: 10 put: 1
+]
+
 { #category : #test }
 LazyArrayTest >> testAssureExistsIndex [
 	| a |
