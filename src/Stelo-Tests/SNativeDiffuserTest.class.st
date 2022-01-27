@@ -450,6 +450,29 @@ SNativeDiffuserTest >> testSetupNSumSrcOrderNeighborSize [
 				asFloatArray.
 ]
 
+{ #category : #'as yet unclassified' }
+SNativeDiffuserTest >> testSetupNSumSrcOrderNeighborSize_amp [
+
+	"SmallAmp has derived this test from `SNativeDiffuserTest>>#testSetupNSumSrcOrderNeighborSize` by regenerating its assertions.
+	This test can cover this part:
+	*	In `SNativeDiffuser>> #diffuserName` from 15 to 33:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 'native diffuser'`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SNativeDiffuser#diffuserName#15#33
+"
+
+	<madeBySmallAmp>
+	| d |
+	d := SNativeDiffuser new.
+	self assert: d diffuserName equals: 'native diffuser'.
+	d
+		setupNSumSrc:
+		#( 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ) asFloatArray
+		order: 4
+		neighborSize: 4
+]
+
 { #category : #'tests-private' }
 SNativeDiffuserTest >> testSetupNeighbor [
 	| d |
