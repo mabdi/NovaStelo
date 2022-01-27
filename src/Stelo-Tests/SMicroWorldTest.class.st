@@ -306,6 +306,35 @@ SMicroWorldTest >> testCountAliveOfBreedNo [
 	self assert: (w countAliveOf: 2) equals: 100.
 ]
 
+{ #category : #'as yet unclassified' }
+SMicroWorldTest >> testCountAliveOfBreedNo_amp [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testCountAliveOfBreedNo` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `SMicroWorld>> #create:turtles:` from 120 to 155:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ (breeds at: bid) create: anInteger`
+		Dynamic state: {#bid->3. #anInteger->1}
+		Mutant id: RemoveCaretOperator#SMicroWorld#create:turtles:#120#155
+	*	In `SMicroWorld>> #newBreed` from 80 to 86:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ breed`
+		Dynamic state: {#breed->nil}
+		Mutant id: RemoveCaretOperator#SMicroWorld#newBreed#80#86
+"
+
+	<madeBySmallAmp>
+	| w aSTurtles |
+	w := self newWorld.
+	aSTurtles := w
+		             create: 3 turtles: 10;
+		             newBreed.
+	self assert: aSTurtles class equals: STurtles.
+	w
+		create: 4 turtles: 15;
+		createPatch: 10
+]
+
 { #category : #'tests-accessing' }
 SMicroWorldTest >> testExtent [
 	| w |
