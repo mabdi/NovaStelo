@@ -237,6 +237,41 @@ SMicroWorldTest >> testColors_amp_L36_L40 [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp_L36_L67 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #scaleVar:color:breed:from:to:id:` from 55 to 263:
+		Operation: ReplaceIfTrueIfFalseReceiverWithFalseOperator
+		Code snippet: `bid = SBreedId observerBreedNo
+	ifTrue: [ 
+		self patches
+			scaleVarNo: v
+			color: c
+			from: f
+			to: t ]
+	ifFalse: [ 
+		(breeds at: bid)
+			scaleVarNo: v
+			color: c
+			from: f
+			to: t
+			index: id ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueIfFalseReceiverWithFalseOperator#SMicroWorld#scaleVar:color:breed:from:to:id:#55#263
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 3;
+		 create: 3 turtles: 1;
+		 breedOf: 3) colorAt: 2 put: 12.
+	w patches
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testColors_amp_U3 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
