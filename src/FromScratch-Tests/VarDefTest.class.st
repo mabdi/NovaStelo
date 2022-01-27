@@ -243,6 +243,33 @@ VarDefTest >> testIsReserved_amp_D2 [
 		addVariable: 'a'
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testIsReserved_amp_D2_L20 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testIsReserved` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `VarDef>> #varNoFor:` from 46 to 50:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ nil`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#varNoFor:#46#50
+	*	In `VarDef>> #varNoFor:` from 20 to 52:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `aString isEmpty ifTrue: [ ^ nil ]`
+		Dynamic state: {#aString->''}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#VarDef#varNoFor:#20#52
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addReservedVariable: 'b' varNo: 1;
+		addVariable: 'a';
+		addVariable: ''.
+	self assert: (v userDefinedVarNoAndNames at: 2) equals: #( nil '' )
+]
+
 { #category : #test }
 VarDefTest >> testIsStringVarNo [
 	| v a b |
