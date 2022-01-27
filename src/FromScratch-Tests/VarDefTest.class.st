@@ -186,6 +186,38 @@ VarDefTest >> testIsReserved [
 	self assert: (v isReserved: 'b')
 ]
 
+{ #category : #'as yet unclassified' }
+VarDefTest >> testIsReserved_amp [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testIsReserved` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrWithAndMutantOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'a'. #reservedVarNames->#('b')}
+		Mutant id: ReplaceOrWithAndMutantOperator#VarDef#userDefinedVarNames#58#107
+	*	In `VarDef>> #userDefinedVarNames` from 58 to 107:
+		Operation: ReplaceOrArgumentWithFalseOperator
+		Code snippet: `each isNil or: [ reservedVarNames includes: each ]`
+		Dynamic state: {#each->'a'. #reservedVarNames->#('b')}
+		Mutant id: ReplaceOrArgumentWithFalseOperator#VarDef#userDefinedVarNames#58#107
+	*	In `VarDef>> #userDefinedVarNames` from 24 to 109:
+		Operation: ReplaceRejectBlockWithAlwaysFalseBlockOperator
+		Code snippet: `self varNames reject: [ :each | 
+	each isNil or: [ reservedVarNames includes: each ] ]`
+		Dynamic state: nil
+		Mutant id: ReplaceRejectBlockWithAlwaysFalseBlockOperator#VarDef#userDefinedVarNames#24#109
+"
+
+	<madeBySmallAmp>
+	| v |
+	v := self newVarDef.
+	v
+		addReservedVariable: 'b' varNo: 1;
+		addVariable: 'a'.
+	self assert: v userDefinedVarNoAndNames size equals: 1
+]
+
 { #category : #test }
 VarDefTest >> testIsStringVarNo [
 	| v a b |
