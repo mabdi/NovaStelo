@@ -31,3 +31,41 @@ ScratchPlotCommandTest >> testIsClearPlot [
 	p command: p class clearPlotNo.
 	self assert: p isClearPlot
 ]
+
+{ #category : #'as yet unclassified' }
+ScratchPlotCommandTest >> testIsClearPlot_amp [
+
+	"SmallAmp has derived this test from `ScratchPlotCommandTest>>#testIsClearPlot` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `ScratchPlotCommand class>> #clearPlotNo` from 14 to 16:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#ScratchPlotCommand class#clearPlotNo#14#16
+	*	In `ScratchPlotCommand>> #isSetPlotYMax` from 18 to 54:
+		Operation: ReplaceEqualWithNotEqualOperator
+		Code snippet: `self command = self class setPlotYMax`
+		Dynamic state: nil
+		Mutant id: ReplaceEqualWithNotEqualOperator#ScratchPlotCommand#isSetPlotYMax#18#54
+	*	In `ScratchPlotCommand>> #isSetPlotYMin` from 18 to 54:
+		Operation: ReplaceEqualWithNotEqualOperator
+		Code snippet: `self command = self class setPlotYMin`
+		Dynamic state: nil
+		Mutant id: ReplaceEqualWithNotEqualOperator#ScratchPlotCommand#isSetPlotYMin#18#54
+	*	In `ScratchPlotCommand>> #args` from 7 to 12:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ args`
+		Dynamic state: {#args->nil}
+		Mutant id: RemoveCaretOperator#ScratchPlotCommand#args#7#12
+"
+
+	<madeBySmallAmp>
+	| p |
+	p := self newPlotCommand.
+	self
+		assert: p args isNil;
+		deny: p isSetPlotYMax;
+		deny: p isSetPlotYMin.
+	p command: p class clearPlotNo.
+	self assert: p command equals: 1
+]
