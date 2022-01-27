@@ -66,6 +66,27 @@ VarDefTest >> testAddReservedVarNoClassName [
 ]
 
 { #category : #'as yet unclassified' }
+VarDefTest >> testAddReservedVarNoClassName_amp_A10 [
+
+	"SmallAmp has derived this test from `VarDefTest>>#testAddReservedVarNoClassName` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `VarDef>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#VarDef#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| v x anInteger |
+	v := self newVarDef.
+	anInteger := v
+		             addReserved: 'b' varNo: 2 className: #ByteArray;
+		             fieldsVersion.
+	self assert: anInteger equals: 1
+]
+
+{ #category : #'as yet unclassified' }
 VarDefTest >> testAddReservedVarNoClassName_amp_A8 [
 
 	"SmallAmp has derived this test from `VarDefTest>>#testAddReservedVarNoClassName` by applying some transformations and regenerating its assertions.
