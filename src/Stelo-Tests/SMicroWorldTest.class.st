@@ -395,6 +395,31 @@ SMicroWorldTest >> testForwardBreedId_amp_A509 [
 		createPatch: 5
 ]
 
+{ #category : #'as yet unclassified' }
+SMicroWorldTest >> testForwardBreedId_amp_L447_L109_L317 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testForwardBreedId` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #forward:breed:id:` from 403 to 455:
+		Operation: ReplaceIfTrueReceiverWithTrueOperator
+		Code snippet: `penDown ifTrue: [ ps colorAtPoint: x @ y put: c ]`
+		Dynamic state: {#penDown->false. #x->49.0. #y->0.0. #c->46}
+		Mutant id: ReplaceIfTrueReceiverWithTrueOperator#SMicroWorld#forward:breed:id:#403#455
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 100;
+		 create: 3 turtles: 1;
+		 breedOf: 3) headingAt: 1 put: 0.
+	w
+		x: 3 at: 1 put: 49;
+		forward: 1 breed: 3 id: 1.
+	self should: [ w x: 0 at: 1 put: 49.1 ] raise: SubscriptOutOfBounds
+]
+
 { #category : #'tests-accessing' }
 SMicroWorldTest >> testMaxBreedNo [
 	| w |
