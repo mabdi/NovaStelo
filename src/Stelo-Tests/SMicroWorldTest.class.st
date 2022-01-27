@@ -178,6 +178,30 @@ SMicroWorldTest >> testColors [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp_A100 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #y:at:put:` from 250 to 262:
+		Operation: ReplaceMinusWithPlusMutantOperator
+		Code snippet: `(aNumber - y)`
+		Dynamic state: {#aNumber->50. #y->-49.099998474121094}
+		Mutant id: ReplaceMinusWithPlusMutantOperator#SMicroWorld#y:at:put:#250#262
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 3;
+		 create: 3 turtles: 1;
+		 breedOf: 3) colorAt: 1 put: 12.
+	w
+		patches;
+		worldName
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testColors_amp_L36_L40 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
