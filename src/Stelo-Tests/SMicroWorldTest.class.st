@@ -178,6 +178,39 @@ SMicroWorldTest >> testColors [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `SMicroWorld>> #turtle:x:y:exceptBreed:index:` from 119 to 129:
+		Operation: ReplaceEqualWithNotEqualOperator
+		Code snippet: `bno = myBno`
+		Dynamic state: nil
+		Mutant id: ReplaceEqualWithNotEqualOperator#SMicroWorld#turtle:x:y:exceptBreed:index:#119#129
+	*	In `SMicroWorld>> #patchIndexAtX:y:` from 24 to 54:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self patches indexAtX: x y: y`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SMicroWorld#patchIndexAtX:y:#24#54
+"
+
+	<madeBySmallAmp>
+	| w aCollection aSTurtles |
+	w := self newWorld.
+	self
+		assert: w newProcess class equals: SProcess;
+		assert: w worldName equals: 'MicroWorld - native diffuser'.
+	aCollection := w
+		               createPatch: 3;
+		               create: 3 turtles: 1.
+	self assert: aCollection class equals: OrderedCollection.
+	aSTurtles := w breedOf: 3.
+	self assert: aSTurtles colors byteSize equals: 100.
+	aSTurtles colorAt: 1 put: 12.
+	w patches
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testColors_amp_A100 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
