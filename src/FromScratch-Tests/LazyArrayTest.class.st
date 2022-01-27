@@ -328,6 +328,28 @@ LazyArrayTest >> testListAtPut [
 	self assert: (a list: 5 at: 3) equals: 'b'
 ]
 
+{ #category : #'as yet unclassified' }
+LazyArrayTest >> testListAt_amp_A5 [
+
+	"SmallAmp has derived this test from `LazyArrayTest>>#testListAt` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `LazyArray>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 2`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#LazyArray#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| a anInteger |
+	a := self newArray: #Array.
+	anInteger := a
+		             defaultValue: '';
+		             fieldsVersion.
+	self assert: anInteger equals: 2.
+	a assureExistsIndex: 5 and: 3
+]
+
 { #category : #test }
 LazyArrayTest >> testListContains [
 	| a |
