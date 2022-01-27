@@ -348,6 +348,53 @@ SMicroWorldTest >> testForwardBreedId [
 		closeTo: -49
 ]
 
+{ #category : #'as yet unclassified' }
+SMicroWorldTest >> testForwardBreedId_amp_A509 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testForwardBreedId` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `SMicroWorld>> #x:at:put:` from 316 to 368:
+		Operation: ReplaceIfTrueReceiverWithTrueOperator
+		Code snippet: `penDown ifTrue: [ ps colorAtPoint: x @ y put: c ]`
+		Dynamic state: {#penDown->false. #x->48.0. #y->0.0. #c->34}
+		Mutant id: ReplaceIfTrueReceiverWithTrueOperator#SMicroWorld#x:at:put:#316#368
+	*	In `SMicroWorld>> #turtle:x:y:exceptBreed:index:` from 185 to 196:
+		Operation: ReplaceIsEmptyWithNotEmptyMutantOperator
+		Code snippet: `list isEmpty`
+		Dynamic state: nil
+		Mutant id: ReplaceIsEmptyWithNotEmptyMutantOperator#SMicroWorld#turtle:x:y:exceptBreed:index:#185#196
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 100;
+		 create: 3 turtles: 1;
+		 breedOf: 3) headingAt: 1 put: 0.
+	(w
+		 x: 3 at: 1 put: 49;
+		 forward: 1 breed: 3 id: 1;
+		 x: 3 at: 1 put: 49.1;
+		 forward: 1 breed: 3 id: 1;
+		 x: 3 at: 1 put: 49.9;
+		 forward: 1 breed: 3 id: 1;
+		 x: 3 at: 1 put: 50;
+		 forward: 1 breed: 3 id: 1;
+		 breedOf: 3) headingAt: 1 put: 90.
+	w
+		x: 3 at: 1 put: 49;
+		y: 3 at: 1 put: 49;
+		forward: 1 breed: 3 id: 1;
+		y: 3 at: 1 put: 49.1;
+		forward: 1 breed: 3 id: 1;
+		y: 3 at: 1 put: 49.9;
+		forward: 1 breed: 3 id: 1;
+		y: 3 at: 1 put: 50;
+		forward: 1 breed: 3 id: 1;
+		createPatch: 5
+]
+
 { #category : #'tests-accessing' }
 SMicroWorldTest >> testMaxBreedNo [
 	| w |
