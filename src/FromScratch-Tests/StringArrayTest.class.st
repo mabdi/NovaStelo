@@ -193,3 +193,24 @@ StringArrayTest >> testStringOf [
 	a forceTo: 1 paddingWith: 'a'.
 	self assert: (a stringOf: 1) equals: 'a'
 ]
+
+{ #category : #'as yet unclassified' }
+StringArrayTest >> testStringOf_amp_A4 [
+
+	"SmallAmp has derived this test from `StringArrayTest>>#testStringOf` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `StringArray>> #fieldsVersion` from 16 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 1`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#StringArray#fieldsVersion#16#18
+"
+
+	<madeBySmallAmp>
+	| a anInteger |
+	a := self newArray.
+	anInteger := a
+		             forceTo: 1 paddingWith: 'a';
+		             fieldsVersion.
+	self assert: anInteger equals: 1
+]
