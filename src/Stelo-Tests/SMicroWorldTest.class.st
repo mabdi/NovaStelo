@@ -423,3 +423,27 @@ SMicroWorldTest >> testVarsBreedAt [
 	self assert: ret first isArray.
 	self assert: ret first size equals: 2
 ]
+
+{ #category : #'as yet unclassified' }
+SMicroWorldTest >> testVarsBreedAt_amp [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testVarsBreedAt` by regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #varsBreed:at:` from 152 to 300:
+		Operation: ReplaceDoBlockWithEmptyBlockOperator
+		Code snippet: `breed varNames do: [ :each | 
+	vno := breed varNoFor: each.
+	v := self var: vno breed: bno at: id.
+	stream nextPut: { 
+			each.
+			v } ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDoBlockWithEmptyBlockOperator#SMicroWorld#varsBreed:at:#152#300
+"
+
+	<madeBySmallAmp>
+	| w ret |
+	w := self newWorld.
+	self assert: w worldName equals: 'MicroWorld - native diffuser'.
+	ret := w varsBreed: SBreedId turtleBreedNo at: 1
+]
