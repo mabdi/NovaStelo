@@ -609,6 +609,37 @@ SMicroWorldTest >> testForwardBreedId_amp_L447_L109_L317 [
 ]
 
 { #category : #'as yet unclassified' }
+SMicroWorldTest >> testForwardBreedId_amp_L447_L109_L333 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testForwardBreedId` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `SMicroWorld>> #worldName` from 12 to 111:
+		Operation: ReplaceIfTrueReceiverWithTrueOperator
+		Code snippet: `self maxBreedNo >= SBreedId patchBreedNo ifTrue: [ 
+	^ 'MicroWorld - ' , self patches diffuserName ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueReceiverWithTrueOperator#SMicroWorld#worldName#12#111
+	*	In `SMicroWorld>> #x:at:put:` from 469 to 530:
+		Operation: ReplaceIfFalseReceiverWithFalseOperator
+		Code snippet: `(x closeTo: aNumber) ifFalse: [ x := ps normalize: aNumber ]`
+		Dynamic state: {#x->49.0. #aNumber->49}
+		Mutant id: ReplaceIfFalseReceiverWithFalseOperator#SMicroWorld#x:at:put:#469#530
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 100;
+		 create: 3 turtles: 1;
+		 breedOf: 3) headingAt: 1 put: 0.
+	w
+		x: 3 at: 1 put: 49;
+		forward: 1 breed: 3 id: 1.
+	self should: [ w x: 0 at: 1 put: 49.1 ] raise: SubscriptOutOfBounds
+]
+
+{ #category : #'as yet unclassified' }
 SMicroWorldTest >> testForwardBreedId_amp_L447_L109_L53 [
 
 	"SmallAmp has derived this test from `SMicroWorldTest>>#testForwardBreedId` by applying some transformations and regenerating its assertions.
