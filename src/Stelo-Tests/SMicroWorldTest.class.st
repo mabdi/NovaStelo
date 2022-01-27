@@ -177,6 +177,28 @@ SMicroWorldTest >> testColors [
 	self assertCollection: w colors equals: #[23 0 0 0 12 0 0 0 0]
 ]
 
+{ #category : #'as yet unclassified' }
+SMicroWorldTest >> testColors_amp_U3 [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testColors` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `SMicroWorld>> #var:breed:putAll:` from 45 to 74:
+		Operation: ReplaceEqualWithNotEqualOperator
+		Code snippet: `bid = SBreedId observerBreedNo`
+		Dynamic state: nil
+		Mutant id: ReplaceEqualWithNotEqualOperator#SMicroWorld#var:breed:putAll:#45#74
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld.
+	(w
+		 createPatch: 3;
+		 create: 3 turtles: 3;
+		 breedOf: 3) colorAt: 3 put: 3.
+	w patches
+]
+
 { #category : #tests }
 SMicroWorldTest >> testCountAliveOfBreedNo [
 	| w |
