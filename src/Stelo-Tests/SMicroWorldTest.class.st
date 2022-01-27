@@ -364,6 +364,40 @@ SMicroWorldTest >> testObserver [
 	self assert: w observer class equals: SObserver.
 ]
 
+{ #category : #'as yet unclassified' }
+SMicroWorldTest >> testObserver_amp [
+
+	"SmallAmp has derived this test from `SMicroWorldTest>>#testObserver` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `SMicroWorld>> #worldName` from 65 to 109:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ 'MicroWorld - ' , self patches diffuserName`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#SMicroWorld#worldName#65#109
+	*	In `SMicroWorld>> #worldName` from 12 to 111:
+		Operation: ReplaceIfTrueWithIfFalseMutantOperator
+		Code snippet: `self maxBreedNo >= SBreedId patchBreedNo ifTrue: [ 
+	^ 'MicroWorld - ' , self patches diffuserName ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueWithIfFalseMutantOperator#SMicroWorld#worldName#12#111
+	*	In `SMicroWorld>> #worldName` from 12 to 111:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `self maxBreedNo >= SBreedId patchBreedNo ifTrue: [ 
+	^ 'MicroWorld - ' , self patches diffuserName ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#SMicroWorld#worldName#12#111
+	*	In `SMicroWorld>> #worldName` from 12 to 51:
+		Operation: ReplaceGreaterOrEqualWithEqualMutantOperator
+		Code snippet: `self maxBreedNo >= SBreedId patchBreedNo`
+		Dynamic state: nil
+		Mutant id: ReplaceGreaterOrEqualWithEqualMutantOperator#SMicroWorld#worldName#12#51
+"
+
+	<madeBySmallAmp>
+	| w |
+	w := self newWorld
+]
+
 { #category : #'tests-accessing' }
 SMicroWorldTest >> testPatches [
 	| w |
