@@ -5,6 +5,7 @@ env:
   project_baseline: NovaStelo
   project_directory: src
   iteration: 3
+  SMALLAMP_NOPUSH: NOPUSH
 
 on:
   workflow_dispatch:
