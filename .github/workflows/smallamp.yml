@@ -6,7 +6,10 @@ env:
   project_directory: src
   iteration: 3
   SMALLAMP_NOPUSH: NOPUSH
-
+  SMALLAMP_MaxCrash: 10
+  # check image freeze each 4*60 sec: a normal test method has a 3 minute time out
+  SMALLAMP_freezeTimeOut: 120 
+  
 on:
   workflow_dispatch:
     inputs:
