@@ -9,6 +9,7 @@ env:
   SMALLAMP_MaxCrash: 10
   # check image freeze each 4*60 sec: a normal test method has a 3 minute time out
   SMALLAMP_freezeTimeOut: 120 
+  SmallAmp_ShredSeed: ${{ github.run_id}}  
   
 on:
   workflow_dispatch:
